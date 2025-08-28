@@ -10,6 +10,8 @@ function AgregarAmigo() {
     if (nombre !== "") {
         ListaAmigos.push(nombre);
         document.getElementById("amigo").value = "";
-        actualizarLista();
+        ActualizarLista();
     }
 }
+
+function ActualizarLista() {}
