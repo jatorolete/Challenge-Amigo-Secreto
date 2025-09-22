@@ -34,7 +34,8 @@ function ActualizarLista(){
     }
 }
 
-// La nueva función para sortear un amigo
+
+//función para sortear un amigo 
 function sortearAmigo() {
     //Validar que el array no esté vacío
     if (listaAmigos.length === 0){
@@ -45,9 +46,48 @@ function sortearAmigo() {
     let indiceAleatorio = Math.floor(Math.random() * listaAmigos.length);
     //obtener el nombre sorteado
     let amigoSorteado = listaAmigos [indiceAleatorio];
+    listaAmigos.splice(indiceAleatorio, 1); // Eliminar el amigo sorteado de la lista para evitar que se dupliquen
 
     //Mostrar el resultado
     let elementoResultado = document.getElementById("resultado");
     elementoResultado.innerHTML = `¡El amigo sorteado es: <b>${amigoSorteado}</b>!`;
+    ActualizarLista();
     console.log(`Sorteando... ¡El ganador es: ${amigoSorteado}!`);
+
 }
+
+//la nueva funcion para sortear amigo con reinicio 
+/* al hacer el juego nuevo si el primer nombre esta vacio vuelve a reiniciar el juego y
+no arroja el alert de casilla vacia*/
+/*
+function sortearAmigo() {
+  let elementoResultado = document.getElementById("resultado");
+
+  if (listaAmigos.length === 0) {
+    elementoResultado.innerHTML = "Ya no quedan amigos por sortear. ¡Reiniciando el juego!";
+    
+    // Reiniciar el juego después de 3 segundos
+    setTimeout(() => {
+      listaAmigos = [];
+      ActualizarLista();
+      elementoResultado.innerHTML = ""; // Limpiar el mensaje
+    }, 3000);
+
+    return;
+  }
+
+  let indiceAleatorio = Math.floor(Math.random() * listaAmigos.length);
+  let amigoSorteado = listaAmigos[indiceAleatorio];
+
+  // Eliminar el amigo sorteado del array
+  listaAmigos.splice(indiceAleatorio, 1);
+
+  // Mostrar el resultado
+  elementoResultado.innerHTML = `¡El amigo sorteado es: <b>${amigoSorteado}</b>!`;
+
+  // Actualizar la lista visual
+  ActualizarLista();
+
+  console.log(`Sorteando... ¡El ganador es: ${amigoSorteado}!`);
+}
+*/
